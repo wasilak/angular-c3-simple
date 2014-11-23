@@ -39,7 +39,7 @@ Link to them in your project:
 ```html
 <script src="path/to/d3.min.js"></script>
 <script src="path/to/c3.min.js"></script>
-<script src="path/to/animatescroll.min.js"></script>
+<script src="path/to/angular.min.js"></script>
 <script src="path/to/angular_c3_simple.min.js"></script>
 ```
 
