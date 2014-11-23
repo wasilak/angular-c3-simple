@@ -3,6 +3,8 @@ Angular C3 Simple
 
 A simple [AngularJS](https://angularjs.org/) directive allowing to work with [C3.js](http://c3js.org/) which is [D3](http://d3js.org/) based chart rendering library.
 
+You can see demo [here](http://wasilak.github.io/angular-c3-simple/).
+
 Why bother?
 -------------------
 
