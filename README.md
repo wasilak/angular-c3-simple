@@ -1,4 +1,5 @@
 Angular C3 Simple
+[![Code Climate](https://codeclimate.com/github/wasilak/angular-c3-simple/badges/gpa.svg)](https://codeclimate.com/github/wasilak/angular-c3-simple)
 =============
 
 A simple [AngularJS](https://angularjs.org/) directive allowing to work with [C3.js](http://c3js.org/) which is [D3](http://d3js.org/) based chart rendering library.
