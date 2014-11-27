@@ -24,29 +24,29 @@
           },
           template: '<div></div>',
           replace: true,
-          link: function(scope, element, attrs) {
+          controller: function($scope, $element) {
 
             // binding chart to element with provided ID
-            scope.config.bindto = '#' + attrs.id;
+            $scope.config.bindto = '#' + $element[0].id;
 
             //Generating the chart on every data change
-            scope.$watch('config.data.columns', function(newSeries, oldSeries) {
+            $scope.$watch('config.data.columns', function(newSeries, oldSeries) {
 
               // if there is no data for columns, we're setting this, in order to show nothing
               // instead of empty line chart
-              if (scope.config.data.columns.length === 0) {
-                  scope.config.data.columns = ['no data', 0];
+              if ($scope.config.data.columns.length === 0) {
+                  $scope.config.data.columns = ['no data', 0];
               }
 
               // adding (or overwriting) chart to service c3SimpleService
               // we are regenerating chart on each change - this might seem slow and unefficient
               // but works pretty well and allows us to have more controll
-              c3SimpleService[scope.config.bindto] = c3.generate(scope.config);
+              c3SimpleService[$scope.config.bindto] = c3.generate($scope.config);
 
               // if there is no size specified, we are assuming, that chart will have width
               // of its container (proportional of course) - great for responsive design
-              if (!scope.config.size) {
-                  c3SimpleService[scope.config.bindto].resize();
+              if (!$scope.config.size) {
+                  c3SimpleService[$scope.config.bindto].resize();
               }
             });
           }
