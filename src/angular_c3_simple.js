@@ -32,12 +32,6 @@
             //Generating the chart on every data change
             $scope.$watch('config.data.columns', function(newSeries, oldSeries) {
 
-              // if there is no data for columns, we're setting this, in order to show nothing
-              // instead of empty line chart
-              if ($scope.config.data.columns.length === 0) {
-                  $scope.config.data.columns = ['no data', 0];
-              }
-
               // adding (or overwriting) chart to service c3SimpleService
               // we are regenerating chart on each change - this might seem slow and unefficient
               // but works pretty well and allows us to have more controll

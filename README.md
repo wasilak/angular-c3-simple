@@ -55,7 +55,7 @@ In both cases it accepts same parameters as attributes:
 
 * id - and ID of element it is attached to, simple stuff nothing fancy
 * config - JavaScript object with all options you can use in C3.js [documentation](http://c3js.org/examples.html)
-* one thing to remember: for now Directive only knows how to handle ```data.columns``` ([docs](http://c3js.org/samples/data_columned.html)) type of data provided for chart. Any other might work, but it will not be change/update aware - ```$scope``` won't we working it's magic. I plan to implement this in near future, if there will be need for it.
+* ~~one thing to remember: for now Directive only knows how to handle ```data.columns``` ([docs](http://c3js.org/samples/data_columned.html)) type of data provided for chart. Any other might work, but it will not be change/update aware - ```$scope``` won't we working it's magic. I plan to implement this in near future, if there will be need for it.~~ Since version ```0.0.7``` you should be able to safely use any definition of ```data``` that C3.js accepts.
 
 Now all you have to do is plug-in ```angular-c3-simple``` module into your application, maybe something like this:
 
