@@ -24,10 +24,13 @@
           },
           template: '<div></div>',
           replace: true,
+          link: function(scope, elem, attr) {
+            scope.$evalAsync(function() {
+              // binding chart to element with provided ID
+              scope.config.bindto = '#' + elem[0].id;
+            })
+          },
           controller: function($scope, $element) {
-
-            // binding chart to element with provided ID
-            $scope.config.bindto = '#' + $element[0].id;
 
             //Generating the chart on every data change
             $scope.$watch('config.data.columns', function(newSeries, oldSeries) {
