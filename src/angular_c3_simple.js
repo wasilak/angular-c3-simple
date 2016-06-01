@@ -24,11 +24,13 @@
           },
           template: '<div></div>',
           replace: true,
-          link: function(scope, elem, attr) {
-            scope.$evalAsync(function() {
+          link: function($scope, $element, $attr) {
+
+            // Wait until id is set before binding chart to this id
+            $scope.$watch($attr.id, function() {
               // binding chart to element with provided ID
-              scope.config.bindto = '#' + elem[0].id;
-            })
+              $scope.config.bindto = '#' + $attr.id;
+            });
           },
           controller: function($scope, $element) {
 
