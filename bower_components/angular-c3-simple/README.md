@@ -122,6 +122,8 @@ After plugging-in you'll have all charts available via **c3SimpleService**. Let'
 c3SimpleService['#myNewChart1'];
 ```
 
+> You can also set ```id``` of an element dynamically, by using ```ng-attr-id```
+
 Now let's say you'd like to transform ```data1``` series from whatever it is now to ```bar``` type:
 
 ```js
@@ -137,10 +139,12 @@ Basically all API toher than installation and initial config is provided by C3.j
 Building / Minifing
 ----------
 
-You can build minified version yourself, by simply using [Grunt](http://gruntjs.com) in project root.
+You can build minified version yourself, by simply using [Gulp](http://gulpjs.com/) in project root.
+
+First, install node dependencies with ```npm install``` and run:
 
 ```bash
-grunt
+gulp
 ```
 
 Contributing
