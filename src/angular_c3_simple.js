@@ -24,10 +24,15 @@
           },
           template: '<div></div>',
           replace: true,
-          controller: function($scope, $element) {
+          link: function($scope, $element, $attr) {
 
-            // binding chart to element with provided ID
-            $scope.config.bindto = '#' + $element[0].id;
+            // Wait until id is set before binding chart to this id
+            $scope.$watch($attr.id, function() {
+              // binding chart to element with provided ID
+              $scope.config.bindto = '#' + $attr.id;
+            });
+          },
+          controller: function($scope, $element) {
 
             //Generating the chart on every data change
             $scope.$watch('config', function(newConfig, oldConfig) {
