@@ -1,0 +1,43 @@
+{
+  "name": "angular-c3-simple",
+  "description": "Simple C3.js wrapper for AngularJS.",
+  "main": "dist/angular_c3_simple.js",
+  "keywords": [
+    "angularjs",
+    "c3",
+    "chart"
+  ],
+  "homepage": "https://github.com/wasilak/angular-c3-simple",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wasilak/angular-c3-simple.git"
+  },
+  "license": "MIT",
+  "authors": [
+    "Piotr Wasilewski",
+    "Piotr Wasilewski <piotr.m.wasilewski@gmail.com>"
+  ],
+  "ignore": [
+    ".gitignore",
+    ".jshintrc",
+    "Gruntfile.js",
+    "package.json",
+    "bower_components"
+  ],
+  "dependencies": {
+    "d3": ">=3.4.13",
+    "c3": ">=0.3.0",
+    "angular": ">=1.2.27"
+  },
+  "devDependencies": {},
+  "version": "0.0.8",
+  "_release": "0.0.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.8",
+    "commit": "5259b19ab805a0895f110f795c28e497356b169e"
+  },
+  "_source": "https://github.com/wasilak/angular-c3-simple.git",
+  "_target": "^0.0.8",
+  "_originalSource": "angular-c3-simple"
+}
