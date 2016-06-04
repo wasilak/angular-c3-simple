@@ -25,29 +25,38 @@
           template: '<div></div>',
           replace: true,
           controller: function($scope, $element) {
-
-            // binding chart to element with provided ID
-            $scope.config.bindto = '#' + $element[0].id;
-
-            //Generating the chart on every data change
-            $scope.$watch('config', function(newConfig, oldConfig) {
-
-              // adding (or overwriting) chart to service c3SimpleService
-              // we are regenerating chart on each change - this might seem slow and unefficient
-              // but works pretty well and allows us to have more controll
-              c3SimpleService[$scope.config.bindto] = c3.generate(newConfig);
-
-              // if there is no size specified, we are assuming, that chart will have width
-              // of its container (proportional of course) - great for responsive design
-              if (!newConfig.size) {
-                  c3SimpleService[$scope.config.bindto].resize();
+            // Wait until id is set before binding chart to this id
+            $scope.$watch($element, function() {
+              
+              if ('' === $element[0].id) {
+                return;
               }
+              
+              // binding chart to element with provided ID
+              $scope.config.bindto = '#' + $element[0].id;
+
+              //Generating the chart on every data change
+              $scope.$watch('config', function(newConfig, oldConfig) {
+                
+                // adding (or overwriting) chart to service c3SimpleService
+                // we are regenerating chart on each change - this might seem slow and unefficient
+                // but works pretty well and allows us to have more controll
+                c3SimpleService[$scope.config.bindto] = c3.generate(newConfig);
+                
+                // if there is no size specified, we are assuming, that chart will have width
+                // of its container (proportional of course) - great for responsive design
+                if (!newConfig.size) {
+                  c3SimpleService[$scope.config.bindto].resize();
+                }
+                
+                // only updating data (enables i.e. animations)
+                $scope.$watch('config.data', function(newData, oldData) {
+                  if ($scope.config.bindto) {
+                    c3SimpleService[$scope.config.bindto].load(newData);
+                  }
+                }, true);
+              });
             });
-            
-            // only updating data (enables i.e. animations)
-            $scope.$watch('config.data', function(newData, oldData) {
-              c3SimpleService[$scope.config.bindto].load(newData);
-            }, true);
           }
         };
     }]);

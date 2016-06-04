@@ -9,8 +9,8 @@
 <h2 ng-hide="true">for this demo to work, you have to install dependencies with bower.</h2>
 
 <div ng-controller="DemoCtrl">
-  <h1>TimeSeries Demo</h1>
-  <c3-simple id="chart" config="chart"></c3-simple>
+  <h1>Time Series Demo</h1>
+  <c3-simple ng-attr-id="{{dynamicChartId}}" config="chart"></c3-simple>
   <button type="button" name="button" ng-click="generateData('chart')">Generate Random Data</button>
   <br />
   <h2>transform data1</h2>
@@ -35,6 +35,8 @@
   var angularDemo = angular.module('angularDemo', ['angular-c3-simple'])
 
     .controller('DemoCtrl', ['$scope', 'c3SimpleService', function ($scope, c3SimpleService) {
+      
+    $scope.dynamicChartId = 'chart';
 
     $scope.chartType = {};
     $scope.chartType['data1'] = 'area';
