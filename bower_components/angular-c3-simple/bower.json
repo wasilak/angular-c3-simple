@@ -20,9 +20,9 @@
     "bower_components"
   ],
   "dependencies": {
-    "d3": ">=3.4.13",
-    "c3": ">=0.3.0",
-    "angular": ">=1.2.27"
+    "d3": ">=3.x",
+    "c3": ">=0.x",
+    "angular": ">=1.x"
   },
   "devDependencies": {}
 }

@@ -25,19 +25,19 @@
     "bower_components"
   ],
   "dependencies": {
-    "d3": ">=3.4.13",
-    "c3": ">=0.3.0",
-    "angular": ">=1.2.27"
+    "d3": ">=3.x",
+    "c3": ">=0.x",
+    "angular": ">=1.x"
   },
   "devDependencies": {},
-  "version": "0.0.8",
-  "_release": "0.0.8",
+  "version": "0.0.9",
+  "_release": "0.0.9",
   "_resolution": {
     "type": "version",
-    "tag": "v0.0.8",
-    "commit": "5259b19ab805a0895f110f795c28e497356b169e"
+    "tag": "v0.0.9",
+    "commit": "3152d185a3b41a549a846a7bca7cf684bb554961"
   },
   "_source": "https://github.com/wasilak/angular-c3-simple.git",
-  "_target": "^0.0.8",
+  "_target": "^0.x",
   "_originalSource": "angular-c3-simple"
 }
