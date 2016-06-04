@@ -1,9 +1,17 @@
 {
-  "name": "animateScrollNavigation.js",
-  "version": "0.0.9",
-  "devDependencies": {},
-  "dependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-uglify": "^0.5.1"
-  }
+  "name": "angular_c3_simple",
+  "version": "0.0.10",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-dest": "^0.2.3",
+    "gulp-jshint": "^2.0.1",
+    "gulp-livereload": "^3.8.1",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-typescript": "^2.13.4",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0"
+  },
+  "dependencies": {}
 }
