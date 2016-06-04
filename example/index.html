@@ -6,11 +6,13 @@
 </head>
 <body>
 
-<h2>for this demo to work, you have to install dependencies with bower.</h2>
+<h2 ng-hide="true">for this demo to work, you have to install dependencies with bower.</h2>
 
 <div ng-controller="DemoCtrl">
   <h1>TimeSeries Demo</h1>
   <c3-simple id="chart" config="chart"></c3-simple>
+  <button type="button" name="button" ng-click="generateData('chart')">Generate Random Data</button>
+  <br />
   <h2>transform data1</h2>
   <select ng-model="chartType.data1" ng-options="item.value as item.name for item in filterOptions" ng-change="transform('chart', 'data1')"></select>
   <h2>transform data2</h2>
@@ -27,7 +29,7 @@
 <script src="../bower_components/c3/c3.min.js"></script>
 
 <!-- angular C3 simple -->
-<script src="../dist/angular_c3_simple.min.js"></script>
+<script src="../src/angular_c3_simple.js"></script>
 
 <script>
   var angularDemo = angular.module('angularDemo', ['angular-c3-simple'])
@@ -72,16 +74,24 @@
     $scope.transform = function(chartId, serie) {
       c3SimpleService['#' + chartId].transform($scope.chartType[serie], serie);
     };
+    
+    var getRandomData = function() {
+      return [
+        ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
+        ['data1', Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)],
+        ['data2', Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
+      ];
+    }
+    
+    $scope.generateData = function(chartId) {
+      $scope.chart.data.columns = getRandomData()
+    }
 
     $scope.chart = {
       data : {
         x: 'x',
         type: 'area',
-        columns: [
-          ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-          ['data1', 30, 200, 100, 400, 150, 250],
-          ['data2', 130, 340, 200, 500, 250, 350]
-        ],
+        columns: getRandomData(),
         types: {
             data1: $scope.chartType['data1'],
             data2: $scope.chartType['data2']
