@@ -55,7 +55,7 @@
                     c3SimpleService[$scope.config.bindto].load(newData);
                   }
                 }, true);
-              });
+              }, true);
             });
           }
         };
