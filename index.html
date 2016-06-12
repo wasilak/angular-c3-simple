@@ -3,24 +3,16 @@
 <head>
   <title>Angular C3 Simple Demo</title>
   <link rel="stylesheet" href="bower_components/c3/c3.min.css">
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-11434481-3', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </head>
 <body>
 
+<h2 ng-hide="true">for this demo to work, you have to install dependencies with bower.</h2>
+
 <div ng-controller="DemoCtrl">
-  <h1>TimeSeries Demo</h1>
+  <h1>Time Series Demo</h1>
   <c3-simple ng-attr-id="{{dynamicChartId}}" config="chart"></c3-simple>
   <button type="button" name="button" ng-click="generateData('chart')">Generate Random Data</button>
+  <button type="button" name="button" ng-click="toggleLegend('chart')">Toggle Leegend</button>
   <br />
   <h2>transform data1</h2>
   <select ng-model="chartType.data1" ng-options="item.value as item.name for item in filterOptions" ng-change="transform('chart', 'data1')"></select>
@@ -40,102 +32,8 @@
 <!-- angular C3 simple -->
 <script src="bower_components/angular-c3-simple/dist/angular_c3_simple.min.js"></script>
 
-<script>
-  var angularDemo = angular.module('angularDemo', ['angular-c3-simple'])
-
-    .controller('DemoCtrl', ['$scope', 'c3SimpleService', function ($scope, c3SimpleService) {
-      
-    $scope.dynamicChartId = 'chart';
-
-    $scope.chartType = {};
-    $scope.chartType['data1'] = 'area';
-    $scope.chartType['data2'] = 'area-step';
-
-    $scope.filterOptions = [
-      {
-        name: 'area',
-        value: 'area'
-      },
-      {
-        name: 'line',
-        value: 'line'
-      },
-      {
-        name: 'bar',
-        value: 'bar'
-      },
-      {
-        name: 'spline',
-        value: 'spline'
-      },
-      {
-        name: 'step',
-        value: 'step'
-      },
-      {
-        name: 'area-step',
-        value: 'area-step'
-      },
-      {
-        name: 'scatter',
-        value: 'scatter'
-      }
-    ];
-
-    $scope.transform = function(chartId, serie) {
-      c3SimpleService['#' + chartId].transform($scope.chartType[serie], serie);
-    };
-    
-    var getRandomData = function() {
-      return [
-        ['x', '2013-01-01', '2013-01-02', '2013-01-03', '2013-01-04', '2013-01-05', '2013-01-06'],
-        ['data1', Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)],
-        ['data2', Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000), Math.round(Math.random() * 1000)]
-      ];
-    }
-    
-    $scope.generateData = function(chartId) {
-      $scope.chart.data.columns = getRandomData()
-    }
-
-    $scope.chart = {
-      data : {
-        x: 'x',
-        type: 'area',
-        columns: getRandomData(),
-        types: {
-            data1: $scope.chartType['data1'],
-            data2: $scope.chartType['data2']
-          },
-      },
-      axis: {
-        x:{
-          type: "timeseries",
-          tick: {
-            format: function(value) {
-              var month = value.getUTCMonth() + 1;
-              var year = value.getUTCFullYear();
-              return month + '-' + year;
-            }
-          }
-        }
-      },
-      tooltip: {
-        format: {
-          value: function (value, ratio, id) {
-              return value;
-          }
-        }
-      },
-      legend: {
-        show: false
-      }
-    };
-  }
-  ]);
-
-
-</script>
+<!-- angular app -->
+<script src="app.js"></script>
 
 </body>
 </html>

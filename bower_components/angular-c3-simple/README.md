@@ -11,7 +11,7 @@ Why bother?
 
 I needed a way to use C3.js in my AngularJS applications and all libraries/directives I came upon were either too complicated, incomplete or broken and not supported.
 
-Biggest problem with them was that all of them included some kind of theit own API or a way to communicate with C3.js via them. I don't need extra directive attributes ot other ways allowing me to access charts and set their options. Most of the time existing libs didn't even allow to set all of options available in C3.js.
+Biggest problem with them was that all of them included some kind of theit own API or a way to communicate with C3.js via them. I don't need extra directive attributes or other ways allowing me to access charts and set their options. Most of existing libs didn't even allow to set all of options available in C3.js.
 
 All I needed was a directive, whish is a simple wrapper allowing me to **display chart** and use **any option available** while maintaining ability to use AngularJS **$scope and two-way data binding** for chart data.
 
@@ -54,6 +54,7 @@ Angular C3 Simple directive uses simple markup: its name is ```c3-simple``` and 
 In both cases it accepts same parameters as attributes:
 
 * id - and ID of element it is attached to, simple stuff nothing fancy
+  > You can also set id of an element dynamically, by using `ng-attr-id`
 * config - JavaScript object with all options you can use in C3.js [documentation](http://c3js.org/examples.html)
 * ~~one thing to remember: for now Directive only knows how to handle ```data.columns``` ([docs](http://c3js.org/samples/data_columned.html)) type of data provided for chart. Any other might work, but it will not be change/update aware - ```$scope``` won't we working it's magic. I plan to implement this in near future, if there will be need for it.~~ Since version ```0.0.7``` you should be able to safely use any definition of ```data``` that C3.js accepts.
 
@@ -63,7 +64,7 @@ Now all you have to do is plug-in ```angular-c3-simple``` module into your appli
 var angularDemo = angular.module('angularDemo', ['angular-c3-simple']);
 ```
 
-afterwards you can initialize chart with any C3.js options available. For sake of this docs, I'll keep it simple. I'll set type of chart to **timeseries** with some example data (remember: **columns**) and I'll apply some custom formatting on X axis ticks and tooltips. Also I don't want legend. Here it goes:
+afterwards you can initialize chart with any C3.js options available. For sake of this docs, I'll keep it simple. I'll set type of chart to `timeseries` with some example data (remember: **columns**) and I'll apply some custom formatting on X axis ticks and tooltips. Also I don't want legend. Here it goes:
 
 ```js
 angularDemo.controller('DemoCtrl', ['$scope', function ($scope) {
@@ -103,10 +104,16 @@ angularDemo.controller('DemoCtrl', ['$scope', function ($scope) {
 });
 ```
 
+Adjusting chart parameters is as easy as changing it's `config`, i.e. toggling visibility of chart _legend_:
+
+```js
+$scope.chart.legend.show = $scope.chart.legend.show ? false : true;
+```
+
 c3SimpleService
 -------------
 
-Oh, and there is one more nifty thing: c3SimpleService. This little fellow allows you to control any existing chart via C3.js API. You can use any API call available in documemtation. All you have to do is pluig-in this service into your AngularJS controller, like this:
+Oh, and there is one more nifty thing: **c3SimpleService**. This little fellow allows you to access and control any existing chart via C3.js API. You can use any API call available in documentation. All you have to do is pluig-in this service into your AngularJS controller, like this:
 
 ```js
 angularDemo.controller('DemoCtrl', ['$scope', 'c3SimpleService', function ($scope, c3SimpleService) {
@@ -133,7 +140,7 @@ c3SimpleService['#myNewChart1'].transform('bar', 'data1');
 API
 --------------
 
-Basically all API toher than installation and initial config is provided by C3.js docs.
+Basically all API other than installation and initial config is provided by C3.js docs.
 
 
 Building / Minifing
