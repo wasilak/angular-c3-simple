@@ -30,12 +30,12 @@
     "angular": ">=1.x"
   },
   "devDependencies": {},
-  "version": "0.0.11",
-  "_release": "0.0.11",
+  "version": "0.0.12",
+  "_release": "0.0.12",
   "_resolution": {
     "type": "version",
-    "tag": "v0.0.11",
-    "commit": "f93d79ee76f19dc24de0fa5a984eae66cb0ed86c"
+    "tag": "v0.0.12",
+    "commit": "c5b30fd7fd52fcbdb706144879a9aab239322b0a"
   },
   "_source": "https://github.com/wasilak/angular-c3-simple.git",
   "_target": "^0.x",
