@@ -8,9 +8,9 @@
     // service definition, if you want to use itm you have to include it in controller
     // this service allows you to access every chart by it's ID and thanks to this,
     // you can perform any API call available in C3.js http://c3js.org/examples.html#api
-    .service('c3SimpleService', function() {
+    .service('c3SimpleService', [function() {
         return {};
-    })
+    }])
 
     // directive definition, if you want to use itm you have to include it in controller
     .directive('c3Simple', ['c3SimpleService', function(c3SimpleService) {
@@ -24,7 +24,7 @@
           },
           template: '<div></div>',
           replace: true,
-          controller: function($scope, $element) {
+          controller: ['$scope','$element', function($scope, $element) {
             // Wait until id is set before binding chart to this id
             $scope.$watch($element, function() {
               
@@ -57,7 +57,7 @@
                 }, true);
               }, true);
             });
-          }
+          }]
         };
     }]);
 }(c3));
