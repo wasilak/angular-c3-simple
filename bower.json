@@ -1,7 +1,7 @@
 {
   "name": "angular-c3-simple",
   "description": "Simple C3.js wrapper for AngularJS.",
-  "main": "dist/angular_c3_simple.min.js",
+  "main": "dist/angular_c3_simple.js",
   "keywords": ["angularjs", "c3", "chart"],
   "homepage": "https://github.com/wasilak/angular-c3-simple",
   "repository": {

@@ -10,8 +10,9 @@ var stylish = require('jshint-stylish');
 var jsFile = './src/angular_c3_simple.js';
 var jsFileMin = 'angular_c3_simple.min.js';
 
-gulp.task('default', function () {
+gulp.task('default', ['lint:js'], function () {
   return gulp.src(jsFile)
+    .pipe(gulp.dest('./dist'))
     .pipe(uglify({
       mangle: false
     }))
